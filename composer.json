@@ -1,0 +1,23 @@
+{
+  "name": "sn01615/ssf",
+  "description": "Simple swoole framework",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "YangLong",
+      "email": "168119405@qq.com"
+    }
+  ],
+  "require-dev": {
+    "swoole/ide-helper": "^4.5"
+  },
+  "require": {
+    "nikic/fast-route": "^1.3",
+    "php": "^7.1",
+    "ext-json": "*",
+    "symfony/http-foundation": "^4.4",
+    "illuminate/database": "^5.8",
+    "illuminate/events": "^5.8"
+  }
+}
