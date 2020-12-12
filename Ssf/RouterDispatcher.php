@@ -63,6 +63,6 @@ class RouterDispatcher
 
     public function getDispatcher(): Dispatcher
     {
-        return web::getInstance()->getRouter();
+        return web::getInstance()->routers();
     }
 }

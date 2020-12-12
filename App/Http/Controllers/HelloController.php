@@ -15,6 +15,7 @@ class HelloController extends Controller
     {
         $data = new stdClass();
         $data->Hello = 'world';
+        # $data->Test = UserModel::getInstance()->getUser(1);
         return $this->renderJson($response, $data);
     }
 

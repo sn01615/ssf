@@ -18,6 +18,9 @@
     "ext-json": "*",
     "symfony/http-foundation": "^4.4",
     "illuminate/database": "^5.8",
-    "illuminate/events": "^5.8"
+    "illuminate/events": "^5.8",
+    "ext-pdo": "*",
+    "symfony/dotenv": "^4.4",
+    "filp/whoops": "^2.9"
   }
 }

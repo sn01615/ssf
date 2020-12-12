@@ -5,12 +5,15 @@ namespace Ssf;
 
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Ssf\Traits\GetInstances;
 use Ssf\Traits\SsfJson;
 use stdClass;
 use Swoole\Http\Request;
 use Swoole\Http\Server;
 use Symfony\Component\HttpFoundation\Response;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
 
 class RouterFound
 {
@@ -32,9 +35,20 @@ class RouterFound
         /**
          * @var Controller $controller
          */
-        $controller = sprintf("\\App\\Controllers\\%s", $controller);
-
-        return $controller::getInstance()->$method($response, $request, $vars);
+        $controller = sprintf("\\App\\Http\\Controllers\\%s", $controller);
+        try {
+            return $controller::getInstance()->$method($response, $request, $vars);
+        } catch (Exception $e) {
+            $whoops = new Run;
+            $whoops->allowQuit(false);
+            $whoops->writeToOutput(false);
+            $handler = new PrettyPageHandler;
+            $handler->handleUnconditionally(true);
+            $whoops->pushHandler($handler);
+            $html = $whoops->handleException($e);
+            $response->setContent($html);
+            return $response;
+        }
     }
 
     private function reload(Response $response, Server $http): Response

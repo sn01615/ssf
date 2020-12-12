@@ -11,7 +11,7 @@ class web
 {
     use GetInstances;
 
-    public function getRouter(): Dispatcher
+    public function routers(): Dispatcher
     {
         return simpleDispatcher(function (RouteCollector $router) {
             $router->get('/reload', 'reload');
