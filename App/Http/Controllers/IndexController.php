@@ -4,19 +4,27 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\UserModel;
 use stdClass;
 use Swoole\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class HelloController extends Controller
+class IndexController extends Controller
 {
 
-    public function test(Response $response, Request $request, $vars): Response
+    public function home(Response $response, Request $request, $vars): Response
     {
         $data = new stdClass();
         $data->Hello = 'world';
-        # $data->Test = UserModel::getInstance()->getUser(1);
+        $data->Test = UserModel::getInstance()->getUser(1);
         return $this->renderJson($response, $data);
+    }
+
+    public function twig(Response $response, Request $request, $vars): Response
+    {
+        $data = new stdClass();
+        $data->world = 'world';
+        return $this->render($response, "hello.html", $data);
     }
 
     public function testError(Response $response, Request $request, $vars): Response

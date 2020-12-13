@@ -2,6 +2,10 @@
 
 Simple swoole framework
 
+## install
+
+`composer create-project sn01615/ssf youname dev-main`
+
 ## Run
 
 php index.php
@@ -26,3 +30,19 @@ server {
     ...
 }
 ```
+
+## 使用交流
+
+<a
+        target="_blank"
+        href="https://qm.qq.com/cgi-bin/qm/qr?k=jhc1rElYTsePKHkLuZdTPG_KH1oR1ZAq&jump_from=webapi"
+        style="vertical-align: middle"
+      ><img
+        border="0"
+        src="//pub.idqqimg.com/wpa/images/group.png"
+        alt="PHP开发技术交流"
+        title="PHP开发技术交流"
+      ></a>
+        群号码：21890295
+
+论坛：https://www.qingwx.com/category/7

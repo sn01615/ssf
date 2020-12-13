@@ -16,17 +16,19 @@ class web
         return simpleDispatcher(function (RouteCollector $router) {
             $router->get('/reload', 'reload');
 
-            $router->addRoute('GET', '/', 'HelloController@test');
+            $router->addRoute('GET', '/', 'IndexController@home');
 
-            $router->get('/error', 'HelloController@testError');
+            $router->get('/twig', 'IndexController@twig');
+
+            $router->get('/error', 'IndexController@testError');
 
             // {id} must be a number (\d+)
-            $router->get('/user/{id:\d+}', 'HelloController@test');
+            $router->get('/user/{id:\d+}', 'IndexController@test');
             // The /{title} suffix is optional
-            $router->addRoute('GET', '/articles/{id:\d+}[/{title}]', 'HelloController@test');
+            $router->addRoute('GET', '/articles/{id:\d+}[/{title}]', 'IndexController@test');
 
             $router->addGroup('/admin', function (RouteCollector $router) {
-                $router->addRoute('GET', '/list', 'HelloController@testList');
+                $router->addRoute('GET', '/list', 'IndexController@testList');
             });
         });
     }

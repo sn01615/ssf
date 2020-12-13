@@ -5,13 +5,13 @@ namespace Ssf;
 
 
 use App\Http\Controllers\Controller;
-use Exception;
 use Ssf\Traits\GetInstances;
 use Ssf\Traits\SsfJson;
 use stdClass;
 use Swoole\Http\Request;
 use Swoole\Http\Server;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
@@ -38,7 +38,7 @@ class RouterFound
         $controller = sprintf("\\App\\Http\\Controllers\\%s", $controller);
         try {
             return $controller::getInstance()->$method($response, $request, $vars);
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             $whoops = new Run;
             $whoops->allowQuit(false);
             $whoops->writeToOutput(false);
