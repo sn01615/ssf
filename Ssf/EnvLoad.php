@@ -7,7 +7,7 @@ namespace Ssf;
 use Ssf\Traits\GetInstances;
 use Symfony\Component\Dotenv\Dotenv;
 
-class Env
+class EnvLoad
 {
     use GetInstances;
 
