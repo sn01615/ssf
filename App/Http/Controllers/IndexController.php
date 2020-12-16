@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\UserModel;
+use App\Models\TestModel;
 use stdClass;
 use Swoole\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +16,7 @@ class IndexController extends Controller
     {
         $data = new stdClass();
         $data->Hello = 'world';
-        $data->Test = UserModel::getInstance()->getUser(1);
+        $data->Test = TestModel::getInstance()->getUser(1);
         return $this->renderJson($response, $data);
     }
 

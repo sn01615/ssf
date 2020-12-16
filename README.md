@@ -31,26 +31,53 @@ server {
 }
 ```
 
+## Database: Query Builder
+
+Model的 mtb 和 tb 属性都是 Illuminate\Database\Eloquent\Builder 实例， 不同的是mtb是使用主库，tb可能查询的从库
+
+查询数据
+
+```PHP
+$result = $this->mtb->where('id', $id)->limit(1)->get()->toArray();
+```
+
+直接运行SQL(使用db属性的select等方法)
+
+```PHP
+$result = $this->db->select("select * from user where id = 1 limit 1");
+```
+
+插入数据可以使用`iInsert`方法
+
+```PHP
+$newId = $this->iInsert([
+    'name' => 123,
+]);
+```
+
+update数据
+
+```PHP
+$affected = $this->mtb->where('id', 1)->update([
+    'name' => '哈哈',
+]);
+```
+
+Model命名说明
+`TestModel`会映射到`test`表
+`UserModel`会映射到`user`表
+`XxCccModel`会映射到`xx_ccc`表，驼峰会转成下划线
+
 ## 参考
 
-数据库
-laravel database语法参考 https://laravel.com/docs/5.8/database
+数据库 laravel database语法参考 https://laravel.com/docs/5.8/database
 
-模板引擎
-twig语法参考 https://twig.symfony.com/doc/2.x
+模板引擎 twig语法参考 https://twig.symfony.com/doc/2.x
 
 ## 使用交流
 
-<a
-        target="_blank"
-        href="https://qm.qq.com/cgi-bin/qm/qr?k=jhc1rElYTsePKHkLuZdTPG_KH1oR1ZAq&jump_from=webapi"
-        style="vertical-align: middle"
-      ><img
-        border="0"
-        src="//pub.idqqimg.com/wpa/images/group.png"
-        alt="PHP开发技术交流"
-        title="PHP开发技术交流"
-      ></a>
-        群号码：21890295
+[![](https://pub.idqqimg.com/wpa/images/group.png)](https://qm.qq.com/cgi-bin/qm/qr?k=jhc1rElYTsePKHkLuZdTPG_KH1oR1ZAq&jump_from=webapi)
+
+群号码：21890295
 
 论坛：https://www.qingwx.com/category/7
