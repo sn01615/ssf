@@ -18,6 +18,7 @@ trait SsfTwig
         $loader = new FilesystemLoader($templates);
         $twig = new Environment($loader, [
             'cache' => $cache,
+            'auto_reload' => true,
         ]);
 
         $data = (array)$data;
